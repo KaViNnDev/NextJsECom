@@ -1,5 +1,5 @@
 import { type IconsVariant } from "./Icons/";
-import { type InputVarinats } from "./types";
+import { type formVariants, type InputVarinats } from "./types";
 
 export const TOOLBAR_OPTIONS = ["Help", "Orders & Returns", "Hi, John"];
 export const NAVBAR_TITLE = "ECOMMERCE";
@@ -39,3 +39,12 @@ export const InputLabel: Record<InputVarinats, string> = {
   Name: "name",
   Password: "password",
 };
+
+export const FormActionLabel: Record<formVariants, string> = {
+  CreateAccount: "Create account",
+  Login: "Login",
+  Verify: "Verify",
+};
+
+export const EMAIL_IS_TOO_SHORT_TEXT = "Email is Too Short!";
+export const REQUIRED_TEXT = "Required!!!";

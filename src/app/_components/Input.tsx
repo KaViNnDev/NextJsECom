@@ -6,11 +6,20 @@ import { INPUT_PLACEHOLDER, InputLabel } from "./strings";
 interface InputProps {
   variant: "Name" | "Email" | "Password";
   isPassword?: boolean;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  error?: string;
+  value: string;
 }
 
 type InputType = "text" | "password";
 
-export const Input: React.FC<InputProps> = ({ variant, isPassword }) => {
+export const Input: React.FC<InputProps> = ({
+  variant,
+  isPassword,
+  onChange,
+  error,
+  value,
+}) => {
   const formId = useId();
   const [inputType, setInputType] = useState<InputType>("password");
   const toggleInputType = () => {
@@ -32,6 +41,8 @@ export const Input: React.FC<InputProps> = ({ variant, isPassword }) => {
             id={formId}
             className="input-element placeholder:text-customGray"
             placeholder={INPUT_PLACEHOLDER}
+            onChange={onChange}
+            value={value}
           />
           {isPassword === true && (
             <span
@@ -42,6 +53,9 @@ export const Input: React.FC<InputProps> = ({ variant, isPassword }) => {
             </span>
           )}
         </div>
+        {error !== undefined && error !== "" && (
+          <div className="form-error">{error}</div>
+        )}
       </div>
     </>
   );

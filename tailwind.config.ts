@@ -31,6 +31,13 @@ export default {
             lineHeight: "38.73px",
           },
         ],
+        "app-form-sub-title": [
+          "24px",
+          {
+            fontWeight: "500",
+            lineHeight: "29.05px",
+          },
+        ],
         "app-form-sub-text-1": [
           "16px",
           {
