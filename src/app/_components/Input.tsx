@@ -39,7 +39,7 @@ export const Input: React.FC<InputProps> = ({
             type={isPassword === true ? inputType : "text"}
             name={InputLabel[variant]}
             id={formId}
-            className="input-element placeholder:text-customGray"
+            className="input-element app-form-sub-text-1 placeholder:text-customGray"
             placeholder={INPUT_PLACEHOLDER}
             onChange={onChange}
             value={value}
