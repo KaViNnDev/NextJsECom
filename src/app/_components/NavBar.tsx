@@ -1,10 +1,13 @@
+import Link from "next/link";
 import { Icons } from "./Icons";
 import { NAVBAR_ICONS, NAVBAR_LINK_OPTIONS, NAVBAR_TITLE } from "./strings";
 
 export const NavBar = () => {
   return (
     <div className="navbar navbar-wrapper">
-      <h1 className="navbar navbar-title-container">{NAVBAR_TITLE}</h1>
+      <Link href={"/"} className="navbar navbar-title-container">
+        {NAVBAR_TITLE}
+      </Link>
       <div className="navbar navbar-links-wrapper">
         {NAVBAR_LINK_OPTIONS.map((option, index) => (
           <div key={`${index}_${option}`} className="navbar text-app-nav-link">

@@ -150,4 +150,16 @@
     .form-footer-cta {
         @apply cursor-pointer uppercase;
     }
+    .split-box-wrapper {
+        @apply pb-[64px] pt-[46px] text-left;
+    }
+    .split-box-container{
+        @apply flex items-center justify-between gap-[12px];
+    }
+    .otp-wrapper{
+        @apply flex h-[48px] w-[46px] items-center justify-center overflow-hidden rounded border border-customLightGray text-center;
+    }
+    .otp-element{
+    @apply h-full w-full flex-1 text-center;
+    }
 }

@@ -7,8 +7,10 @@ import { Footer } from "./Footer";
 import { CreateAccountSchema } from "./Validation";
 import { Input } from "../Input";
 import { FormAction } from "../FormAction";
+import { useRouter } from "next/navigation";
 
 export const CreateAccountForm = () => {
+  const router = useRouter();
   const { handleChange, touched, errors, values, handleSubmit, isSubmitting } =
     useFormik({
       initialValues: {
@@ -17,11 +19,11 @@ export const CreateAccountForm = () => {
         password: "",
       },
       validationSchema: CreateAccountSchema,
-      onSubmit: async (values) => {
+      onSubmit: async (_values) => {
         await new Promise((res, _rej) => {
-          setTimeout(res, 5000);
+          setTimeout(res, 1500);
         });
-        console.log({ values });
+        router.push("/verify", { scroll: false });
       },
     });
   return (

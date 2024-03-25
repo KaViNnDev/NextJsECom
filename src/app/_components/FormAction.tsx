@@ -13,7 +13,7 @@ export const FormAction: React.FC<FormActionProps> = ({
   disabled,
 }) => {
   return (
-    <div className="form-action-wrapper">
+    <div className={variant !== "Verify" ? "form-action-wrapper" : ""}>
       <button
         type="submit"
         className={`form-action text-app-form-footer-cta ${disabled ? "disabled" : ""}`}
