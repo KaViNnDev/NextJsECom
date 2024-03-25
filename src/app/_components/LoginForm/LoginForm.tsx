@@ -4,14 +4,13 @@ import { SectionWrapper } from "..";
 import { FormAction } from "../FormAction";
 import { Input } from "../Input";
 import {
-  DONT_HAVE_ACC_TEXT,
   LOGIN_FORM_SUB_TEXT,
   LOGIN_FORM_SUB_TITLE,
   LOGIN_TEXT,
-  SIGN_UP_TEXT,
 } from "../strings";
 import { useFormik } from "formik";
 import { loginSchema } from "./Validation";
+import { Footer } from "./Footer";
 
 export const LoginForm = () => {
   const { handleChange, handleSubmit, values, touched, errors, isSubmitting } =
@@ -22,7 +21,7 @@ export const LoginForm = () => {
       },
       validationSchema: loginSchema,
       onSubmit: async (values) => {
-        await new Promise((res, rej) => {
+        await new Promise((res, _rej) => {
           setTimeout(res, 5000);
         });
         console.log({ values });
@@ -60,14 +59,7 @@ export const LoginForm = () => {
           </form>
         </div>
         <div className="pt-[29px]" />
-        <div className="form-login-footer-wrapper">
-          <span className="text-app-form-footer-label">
-            {DONT_HAVE_ACC_TEXT}
-          </span>
-          <span className="form-footer-cta text-app-form-footer-cta">
-            {SIGN_UP_TEXT}
-          </span>
-        </div>
+        <Footer />
       </div>
     </SectionWrapper>
   );

@@ -46,5 +46,5 @@ export const FormActionLabel: Record<formVariants, string> = {
   Verify: "Verify",
 };
 
-export const EMAIL_IS_TOO_SHORT_TEXT = "Email is Too Short!";
+export const PASSWORD_TOO_SHORT_TEXT = "Password is Too Short!";
 export const REQUIRED_TEXT = "Required!!!";
