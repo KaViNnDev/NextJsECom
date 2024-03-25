@@ -1,3 +1,67 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+@font-face {
+  font-family: 'inter';
+  src: url('../app/__fonts/Inter.ttf');
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+}
+
+@layer components {
+    .toolbar-wrapper {
+        @apply items-center justify-end px-[40px] py-[12px];
+    }
+    .toolbar-container {
+        @apply flex items-center justify-end gap-[20px];
+    }
+    .rounded-border {
+        @apply rounded-[20px] border border-solid border-customLightGray;
+    }
+    .section-wrapper{
+      @apply p-[60px] pt-[40px];   
+    }
+    .navbar {
+        @apply flex items-center;
+    }
+    .navbar-wrapper {
+        @apply justify-between px-[40px] pb-[18px] pt-[7px];
+    }
+    .navbar-title-container{
+        @apply text-app-title flex;
+    }
+    .navbar-links-wrapper{
+        @apply gap-[32px] flex-1 justify-center;
+    }
+    .navbar-icons-wrapper {
+        @apply gap-[32px];
+    }
+    .navbanner-wrapper {
+        @apply bg-silver flex-1 justify-center gap-[24px] pb-[8px] pt-[10px];
+    }
+    .input-label {
+        @apply block pb-[7px] capitalize;
+    }
+    .input-wrapper, .input-container {
+        @apply relative;
+    }
+    .input-box {
+        @apply flex w-full rounded-md border-0 pb-[14px] pl-[16px] pr-[14px] pt-[15px] text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600;
+    }
+    .input-element{
+        @apply border-none p-0 outline-none focus:ring-0;
+    }
+    .link-underline{
+        @apply underline underline-offset-2;
+    }
+    .passwd-toggle-btn{
+        @apply inset-y-0 flex cursor-pointer items-center cursor-pointer;
+    }
+    .app-container {
+        @apply m-[auto] flex-1 py-[40px];
+    }
+}

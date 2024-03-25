@@ -5,10 +5,10 @@ import { NavBanner } from "./NavBanner";
 
 export const Header = () => {
   return (
-    <React.Fragment key={"e-com-header"}>
+    <nav key={"e-com-header"}>
       <Toolbar />
       <NavBar />
       <NavBanner />
-    </React.Fragment>
+    </nav>
   );
 };

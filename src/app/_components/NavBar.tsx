@@ -3,18 +3,16 @@ import { NAVBAR_ICONS, NAVBAR_LINK_OPTIONS, NAVBAR_TITLE } from "./strings";
 
 export const NavBar = () => {
   return (
-    <div className="flex items-center justify-between px-[40px] pb-[18px] pt-[7px]">
-      <div className="text-app-title flex-1 items-center justify-start">
-        {NAVBAR_TITLE}
-      </div>
-      <div className=" flex flex-1 items-center justify-center gap-[32px]">
+    <div className="navbar navbar-wrapper">
+      <div className="navbar navbar-title-container">{NAVBAR_TITLE}</div>
+      <div className="navbar navbar-links-wrapper">
         {NAVBAR_LINK_OPTIONS.map((option, index) => (
-          <div key={`${index}_${option}`} className="text-app-nav-link">
+          <div key={`${index}_${option}`} className="navbar text-app-nav-link">
             {option}
           </div>
         ))}
       </div>
-      <div className="flex flex-1 items-center justify-end gap-[32px]">
+      <div className="navbar navbar-icons-wrapper">
         {NAVBAR_ICONS.map((iconVariant, index) => (
           <div key={`${index}_${iconVariant}`}>
             <Icons variant={iconVariant} />

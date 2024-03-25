@@ -78,8 +78,10 @@ export default {
       colors: {
         charcoal: "#333333",
         silver: "#F4F4F4",
+        customGray: "#848484",
+        customLightGray: "#C1C1C1",
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 } satisfies Config;
