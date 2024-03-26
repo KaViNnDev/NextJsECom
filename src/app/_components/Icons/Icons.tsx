@@ -5,6 +5,7 @@ import {
   ChevonLeftIcon,
   ChevonRightIcon,
   SearchIcon,
+  Spinner,
   type SVGProps,
 } from "~/app/_icons/";
 
@@ -24,6 +25,8 @@ const getIcon = (variant: IconsVariant) => {
       return ChevonRightIcon;
     case "Checkbox":
       return CheckboxIcon;
+    case "Spinner":
+      return Spinner;
   }
 };
 

@@ -9,7 +9,7 @@ import { ListItem } from "./ListItem";
 import { PaginationControls } from "./PaginationControls";
 import { data } from "./data";
 import { type InterestCardProps } from "./types";
-import { LIST_FALLBACK_TEXT } from "~/app/constants";
+import { FallBackComponent } from "../FallBackText";
 
 export const InterestCard: React.FC<InterestCardProps> = ({
   page,
@@ -27,7 +27,7 @@ export const InterestCard: React.FC<InterestCardProps> = ({
       <span className="list-wrapper text-app-form-sub-text-3">
         {SAVED_INTEREST_LABEL}
       </span>
-      <Suspense fallback={LIST_FALLBACK_TEXT}>
+      <Suspense fallback={<FallBackComponent />}>
         <div className="list-container">
           {entries.map((entry, index) => {
             return (
@@ -39,14 +39,14 @@ export const InterestCard: React.FC<InterestCardProps> = ({
             );
           })}
         </div>
+        <PaginationControls
+          hasNextPage={end < data.length}
+          hasPrevPage={start > 0}
+          dataLength={data.length}
+          page={page}
+          perPage={perPage}
+        />
       </Suspense>
-      <PaginationControls
-        hasNextPage={end < data.length}
-        hasPrevPage={start > 0}
-        dataLength={data.length}
-        page={page}
-        perPage={perPage}
-      />
     </SectionWrapper>
   );
 };

@@ -171,4 +171,7 @@
     .checkbox-wrapper {
         @apply flex h-[24px] w-[24px] cursor-pointer items-center justify-center rounded-[4px];
     }
+    .fallback-wrapper {
+        @apply flex h-full w-full flex-1 justify-center align-middle;
+    }
 }

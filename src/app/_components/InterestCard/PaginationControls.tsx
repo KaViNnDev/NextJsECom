@@ -8,7 +8,7 @@ import {
   PREVIOUS_PAGE_LABEL,
   START_PAGE_LABEL,
 } from "../strings";
-import { PAGINATION_FALLBACK_TEXT } from "~/app/constants";
+import { FallBackComponent } from "../FallBackText";
 
 interface PaginationControlsProps extends InterestCardProps {
   hasNextPage: boolean;
@@ -31,7 +31,7 @@ export const PaginationControls: React.FC<PaginationControlsProps> = ({
   const windowPage = getWindowPages(Number(page), totalPages);
 
   return (
-    <Suspense fallback={PAGINATION_FALLBACK_TEXT}>
+    <Suspense fallback={<FallBackComponent />}>
       <div className="flex gap-[10px] pt-[67px]">
         <PaginatedButton
           isDisabled={Number(page) === 1}

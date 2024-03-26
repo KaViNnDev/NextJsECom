@@ -3,4 +3,5 @@ export type IconsVariant =
   | "Search"
   | "LeftArrow"
   | "RightArrow"
-  | "Checkbox";
+  | "Checkbox"
+  | "Spinner";

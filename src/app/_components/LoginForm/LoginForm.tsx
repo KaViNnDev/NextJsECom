@@ -11,6 +11,8 @@ import {
 import { useFormik } from "formik";
 import { loginSchema } from "./Validation";
 import { Footer } from "./Footer";
+import { Suspense } from "react";
+import { FallBackComponent } from "../FallBackText";
 
 export const LoginForm = () => {
   const { handleChange, handleSubmit, values, touched, errors, isSubmitting } =
@@ -33,30 +35,32 @@ export const LoginForm = () => {
       <div className="form-divider">
         <div>
           <h3 className="text-app-form-title">{LOGIN_TEXT}</h3>
-          <div className="text-app-form-sub-title pt-[36px]">
+          <div className="pt-[36px] text-app-form-sub-title">
             {LOGIN_FORM_SUB_TITLE}
           </div>
           <div className="pt-[13px] text-app-form-sub-text-1">
             {LOGIN_FORM_SUB_TEXT}
           </div>
-          <form id="login-form" className="pt-[31px]" onSubmit={handleSubmit}>
-            <div className="form-content">
-              <Input
-                variant="Email"
-                onChange={handleChange}
-                error={touched.email ? errors.email : ""}
-                value={values.email}
-              />
-              <Input
-                variant="Password"
-                isPassword
-                onChange={handleChange}
-                error={touched.password ? errors.password : ""}
-                value={values.password}
-              />
-            </div>
-            <FormAction variant="Login" disabled={isSubmitting} />
-          </form>
+          <Suspense fallback={<FallBackComponent />}>
+            <form id="login-form" className="pt-[31px]" onSubmit={handleSubmit}>
+              <div className="form-content">
+                <Input
+                  variant="Email"
+                  onChange={handleChange}
+                  error={touched.email ? errors.email : ""}
+                  value={values.email}
+                />
+                <Input
+                  variant="Password"
+                  isPassword
+                  onChange={handleChange}
+                  error={touched.password ? errors.password : ""}
+                  value={values.password}
+                />
+              </div>
+              <FormAction variant="Login" disabled={isSubmitting} />
+            </form>
+          </Suspense>
         </div>
         <div className="pt-[29px]" />
         <Footer />

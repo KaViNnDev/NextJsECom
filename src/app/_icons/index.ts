@@ -4,3 +4,4 @@ export * from "./Search";
 export * from "./ChevonLeft";
 export * from "./ChevonRight";
 export * from "./Checkbox";
+export * from "./Spinner";
