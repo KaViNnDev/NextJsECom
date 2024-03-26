@@ -1,20 +1,27 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 
-export const SplitBox: React.FC = () => {
-  const [otp, setOtp] = useState<string[]>(["", "", "", "", "", "", "", ""]); // Array to store OTP digits
+interface SplitBoxProps {
+  handleChange: (index: number, value: string) => void;
+  otp: string[];
+  error?: string;
+}
+
+export const SplitBox: React.FC<SplitBoxProps> = ({
+  handleChange,
+  otp,
+  error,
+}) => {
   const inputRefs = useRef<Array<HTMLInputElement | null>>([]); // Refs for individual input fields
 
   // Function to handle input change in each OTP field
-  const handleChange = (index: number, value: string) => {
-    const newOtp = [...otp];
-    newOtp[index] = value;
-    setOtp(newOtp);
+  const handleInputChange = (index: number, value: string) => {
+    handleChange(index, value);
 
     // Move focus to the next input field if available
     if (
-      value !== "" &&
+      value.trim() !== "" &&
       index < otp.length - 1 &&
       inputRefs.current[index + 1]
     ) {
@@ -48,12 +55,15 @@ export const SplitBox: React.FC = () => {
               maxLength={1} // Limit input length to 1 character
               className="input-element otp-element"
               value={digit}
-              onChange={(e) => handleChange(index, e.target.value)}
+              onChange={(e) => handleInputChange(index, e.target.value)}
               onKeyDown={(e) => handleKeyDown(index, e)}
             />
           </div>
         ))}
       </div>
+      {error !== "" && error !== undefined && (
+        <span className="form-error">{error}</span>
+      )}
     </div>
   );
 };
