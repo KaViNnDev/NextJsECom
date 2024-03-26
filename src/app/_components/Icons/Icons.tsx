@@ -1,6 +1,7 @@
 import { CartIcon } from "~/app/_icons/Cart";
 import { type IconsVariant } from "./types";
 import {
+  CheckboxIcon,
   ChevonLeftIcon,
   ChevonRightIcon,
   SearchIcon,
@@ -21,6 +22,8 @@ const getIcon = (variant: IconsVariant) => {
       return ChevonLeftIcon;
     case "RightArrow":
       return ChevonRightIcon;
+    case "Checkbox":
+      return CheckboxIcon;
   }
 };
 

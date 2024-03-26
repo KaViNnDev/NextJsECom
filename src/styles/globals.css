@@ -162,4 +162,13 @@
     .otp-element{
     @apply h-full w-full flex-1 text-center;
     }
+    .list-wrapper {
+        @apply block pb-[28px] pt-[37px] text-left;
+    }
+    .list-container{
+        @apply flex flex-col justify-start gap-[25px];
+    }
+    .checkbox-wrapper {
+        @apply flex h-[24px] w-[24px] cursor-pointer items-center justify-center rounded-[4px];
+    }
 }

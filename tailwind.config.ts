@@ -52,6 +52,13 @@ export default {
             lineHeight: "26px",
           },
         ],
+        "app-form-sub-text-3": [
+          "20px",
+          {
+            fontWeight: "500",
+            lineHeight: "26px",
+          },
+        ],
         "app-form-footer-label": [
           "16px",
           {
@@ -87,6 +94,8 @@ export default {
         silver: "#F4F4F4",
         customGray: "#848484",
         customLightGray: "#C1C1C1",
+        customSilverGray: "#CCCCCC",
+        customSteelGray: "#ACACAC",
       },
     },
   },

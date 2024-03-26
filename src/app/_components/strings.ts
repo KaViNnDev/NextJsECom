@@ -46,6 +46,7 @@ export const FormActionLabel: Record<formVariants, string> = {
   Verify: "Verify",
 };
 
-export const PASSWORD_TOO_SHORT_TEXT = "Password is Too Short!";
-export const REQUIRED_TEXT = "Required!!!";
-export const OTP_INVALID_TEXT = "OTP is Invalid";
+export const START_PAGE_LABEL = "<<";
+export const PREVIOUS_PAGE_LABEL = "<";
+export const LAST_PAGE_LABEL = ">>";
+export const NEXT_PAGE_LABEL = ">";

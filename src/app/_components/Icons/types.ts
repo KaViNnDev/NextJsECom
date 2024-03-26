@@ -1,1 +1,6 @@
-export type IconsVariant = "Cart" | "Search" | "LeftArrow" | "RightArrow";
+export type IconsVariant =
+  | "Cart"
+  | "Search"
+  | "LeftArrow"
+  | "RightArrow"
+  | "Checkbox";
