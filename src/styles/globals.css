@@ -85,7 +85,7 @@
         @apply rounded-[20px] border border-solid border-customLightGray;
     }
     .section-wrapper{
-      @apply p-[60px] pt-[40px];   
+        @apply p-[60px] pt-[40px];
     }
     .navbar {
         @apply flex items-center;
@@ -163,7 +163,7 @@
         @apply flex h-[48px] w-[46px] items-center justify-center overflow-hidden rounded border border-customLightGray text-center;
     }
     .otp-element{
-    @apply h-full w-full flex-1 text-center;
+        @apply h-full w-full flex-1 text-center;
     }
     .list-wrapper {
         @apply block pb-[28px] pt-[37px] text-left;
