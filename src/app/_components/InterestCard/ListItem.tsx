@@ -13,7 +13,7 @@ export const ListItem: React.FC<ListItemProp> = ({ label }) => {
     setIsChecked(!isChecked);
   };
   return (
-    <div className="list-item" onClick={toggleClick}>
+    <div className="interest-list-item" onClick={toggleClick}>
       <Checkbox checked={isChecked} />
       <span>{label}</span>
     </div>

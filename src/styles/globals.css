@@ -180,7 +180,7 @@
     .form-divider {
         @apply border-b-[1px] border-customLightGray pt-[29px];
     }
-    .list-item {
+    .interest-list-item {
         @apply flex cursor-pointer gap-[12px];
     }
 }
