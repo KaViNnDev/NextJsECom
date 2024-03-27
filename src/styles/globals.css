@@ -132,6 +132,9 @@
     .form-action-wrapper {
         @apply pt-[40px];
     }
+    .form-action-align-content {
+        @apply flex flex-col;
+    }
     .form-action {
         @apply rounded-[6px] bg-black text-white text-center uppercase w-full block p-[18.5px] m-[auto]
     }
@@ -173,5 +176,11 @@
     }
     .fallback-wrapper {
         @apply flex h-full w-full flex-1 justify-center align-middle;
+    }
+    .form-divider {
+        @apply border-b-[1px] border-customLightGray pt-[29px];
+    }
+    .list-item {
+        @apply flex cursor-pointer gap-[12px];
     }
 }

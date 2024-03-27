@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { LoginForm } from "../_components/LoginForm/LoginForm";
-import { FallBackComponent } from "../_components/FallBackText";
+import { FallBackComponent } from "../_components/FallBackComponent";
 
 const LoginPage = () => {
   return (

@@ -5,16 +5,14 @@ import { Icons } from ".";
 
 interface CheckboxProps {
   checked: boolean;
-  handleClick: () => void;
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({ checked, handleClick }) => {
+const Checkbox: React.FC<CheckboxProps> = ({ checked }) => {
   return (
     <div
       className={`checkbox-wrapper ${
         checked ? "bg-black" : "bg-customSilverGray"
       }`}
-      onClick={handleClick}
     >
       {checked && <Icons variant="Checkbox" />}
     </div>

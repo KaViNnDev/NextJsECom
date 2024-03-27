@@ -7,6 +7,7 @@
  * need to use are documented accordingly near the end.
  */
 import { initTRPC } from "@trpc/server";
+import { type UUID } from "crypto";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
@@ -23,8 +24,29 @@ import { ZodError } from "zod";
  * @see https://trpc.io/docs/server/context
  */
 export const createTRPCContext = async (opts: { headers: Headers }) => {
+  interface LoginUserType {
+    id: UUID;
+    email: string;
+    password: string;
+  }
+
+  interface UserType extends LoginUserType {
+    name: string;
+  }
+
+  const FIXED_OTP = "12345678";
+
+  const REGISTERED_USER: UserType[] = [];
+
+  const LOGGED_IN_USER: LoginUserType[] = [];
+
+  const TMP_USER: UserType = { email: "", name: "", password: "", id: "0-0-0-0-0" };
   return {
     ...opts,
+    FIXED_OTP,
+    REGISTERED_USER,
+    LOGGED_IN_USER,
+    TMP_USER,
   };
 };
 

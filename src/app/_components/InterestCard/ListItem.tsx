@@ -1,21 +1,20 @@
 "use client";
 
+import { useState } from "react";
 import Checkbox from "../CheckBox";
 
 interface ListItemProp {
-  isChecked: boolean;
   label: string;
 }
 
-export const ListItem: React.FC<ListItemProp> = ({ isChecked, label }) => {
+export const ListItem: React.FC<ListItemProp> = ({ label }) => {
+  const [isChecked, setIsChecked] = useState<boolean>(false);
+  const toggleClick = () => {
+    setIsChecked(!isChecked);
+  };
   return (
-    <div className="flex gap-[12px]">
-      <Checkbox
-        checked={isChecked}
-        handleClick={() => {
-          //
-        }}
-      />
+    <div className="list-item" onClick={toggleClick}>
+      <Checkbox checked={isChecked} />
       <span>{label}</span>
     </div>
   );

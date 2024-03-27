@@ -7,13 +7,13 @@ import {
 } from "../strings";
 import { ListItem } from "./ListItem";
 import { PaginationControls } from "./PaginationControls";
-import { data } from "./data";
 import { type InterestCardProps } from "./types";
-import { FallBackComponent } from "../FallBackText";
+import { FallBackComponent } from "../FallBackComponent";
 
 export const InterestCard: React.FC<InterestCardProps> = ({
   page,
   perPage,
+  data,
 }) => {
   const start = (Number(page) - 1) * Number(perPage);
   const end = start + Number(perPage);
@@ -29,14 +29,8 @@ export const InterestCard: React.FC<InterestCardProps> = ({
       </span>
       <Suspense fallback={<FallBackComponent />}>
         <div className="list-container">
-          {entries.map((entry, index) => {
-            return (
-              <ListItem
-                key={`${index}_${entry}`}
-                isChecked={index % 2 === 1}
-                label={entry}
-              />
-            );
+          {entries.map(({ id, name }) => {
+            return <ListItem key={id} label={name} />;
           })}
         </div>
         <PaginationControls

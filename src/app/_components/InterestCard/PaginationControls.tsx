@@ -1,16 +1,16 @@
 import React, { Suspense } from "react";
 import { getWindowPages } from "./windowPages";
 import { PaginatedButton } from "./PaginatedButton";
-import { type InterestCardProps } from "./types";
+import { type PaginationPageProps } from "./types";
 import {
   LAST_PAGE_LABEL,
   NEXT_PAGE_LABEL,
   PREVIOUS_PAGE_LABEL,
   START_PAGE_LABEL,
 } from "../strings";
-import { FallBackComponent } from "../FallBackText";
+import { FallBackComponent } from "../FallBackComponent";
 
-interface PaginationControlsProps extends InterestCardProps {
+interface PaginationControlsProps extends PaginationPageProps {
   hasNextPage: boolean;
   hasPrevPage: boolean;
   dataLength: number;

@@ -5,20 +5,34 @@ import { SectionWrapper } from "..";
 import { FormAction } from "../FormAction";
 import { VERIFY_EMAIL_ACK_TEXT, VERIFY_EMAIL_LABEL } from "../strings";
 import { SplitBox } from "./SplitBox";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { OTP_INVALID_TEXT, REQUIRED_TEXT } from "~/app/constants";
-import { FallBackComponent } from "../FallBackText";
+import { FallBackComponent } from "../FallBackComponent";
+import { api } from "~/trpc/react";
 
 export const VerifyForm = () => {
   const [otp, setOtp] = useState<string[]>(Array(8).fill(""));
   const [error, setError] = useState<string>();
+  const [verificationError, setVerificationError] = useState<string>();
   const router = useRouter();
+  const search = useSearchParams();
+  const verificationMutation = api.user.verifyOtp.useMutation({
+    onSuccess: () => {
+      setVerificationError("");
+      router.push("/interests");
+    },
+    onError: (error) => {
+      setVerificationError(error.message);
+    },
+  });
+
   const handleChange = (index: number, value: string) => {
     const newOtp = [...otp];
     newOtp[index] = value.trim();
     setOtp(newOtp);
   };
   const submitHandler = () => {
+    setVerificationError("");
     const isRequired = otp.some((digit) => digit === "");
     if (isRequired) {
       setError(REQUIRED_TEXT);
@@ -29,7 +43,9 @@ export const VerifyForm = () => {
       setError(OTP_INVALID_TEXT);
       return;
     }
-    router.push("/interests", { scroll: false });
+    verificationMutation.mutate({
+      otp: otp.join(""),
+    });
   };
   return (
     <SectionWrapper>
@@ -45,10 +61,14 @@ export const VerifyForm = () => {
           <div className="text-app-form-sub-text-1">
             {VERIFY_EMAIL_ACK_TEXT}
           </div>
-          <div className="text-app-form-footer-cta">{"xyz@gmail.com"}</div>
+          <div className="text-app-form-footer-cta">{search.get("email")}</div>
           <Suspense fallback={<FallBackComponent />}>
             <SplitBox handleChange={handleChange} otp={otp} error={error} />
-            <FormAction variant="Verify" disabled={false} />
+            <FormAction
+              variant="Verify"
+              disabled={false}
+              error={verificationError}
+            />
           </Suspense>
         </form>
       </div>

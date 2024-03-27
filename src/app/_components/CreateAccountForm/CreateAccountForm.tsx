@@ -8,11 +8,22 @@ import { CreateAccountSchema } from "./Validation";
 import { Input } from "../Input";
 import { FormAction } from "../FormAction";
 import { useRouter } from "next/navigation";
-import { Suspense } from "react";
-import { FallBackComponent } from "../FallBackText";
+import { Suspense, useState } from "react";
+import { FallBackComponent } from "../FallBackComponent";
+import { api } from "~/trpc/react";
 
 export const CreateAccountForm = () => {
   const router = useRouter();
+  const [userRegistrationError, setUserRegistrationError] = useState<string>();
+  const userRegistrationMutation = api.user.registerUser.useMutation({
+    onSuccess: (success) => {
+      setUserRegistrationError("");
+      router.push(`/verify?email=${success.TMP_USER.email}`);
+    },
+    onError: (error) => {
+      setUserRegistrationError(error.message);
+    },
+  });
   const { handleChange, touched, errors, values, handleSubmit, isSubmitting } =
     useFormik({
       initialValues: {
@@ -21,11 +32,16 @@ export const CreateAccountForm = () => {
         password: "",
       },
       validationSchema: CreateAccountSchema,
-      onSubmit: async (_values) => {
+      onSubmit: async ({ email, name, password }) => {
+        setUserRegistrationError("");
         await new Promise((res, _rej) => {
-          setTimeout(res, 1500);
+          userRegistrationMutation.mutate({
+            email,
+            name,
+            password,
+          });
+          res("");
         });
-        router.push("/verify", { scroll: false });
       },
     });
   return (
@@ -53,7 +69,11 @@ export const CreateAccountForm = () => {
               value={values.password}
             />
           </div>
-          <FormAction variant="CreateAccount" disabled={isSubmitting} />
+          <FormAction
+            variant="CreateAccount"
+            disabled={isSubmitting}
+            error={userRegistrationError}
+          />
         </form>
       </Suspense>
       <Footer />

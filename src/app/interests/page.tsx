@@ -1,3 +1,6 @@
+"use client";
+
+import { api } from "~/trpc/react";
 import { InterestCard } from "../_components/InterestCard/InterestCard";
 import { ENTRIES_PER_PAGE, INITIAL_PAGE } from "../constants";
 
@@ -6,9 +9,15 @@ interface InterestPageProps {
 }
 
 const InterestPage = ({ searchParams }: InterestPageProps) => {
+  const PRODUCT_ITMES_LENGTH = 100;
   const page = searchParams?.page ?? INITIAL_PAGE;
   const perPage = searchParams?.per_page ?? ENTRIES_PER_PAGE;
-  return <InterestCard page={page} perPage={perPage} />;
+  const products = api.products.getAllProducts.useQuery({
+    productLength: PRODUCT_ITMES_LENGTH,
+  });
+  return (
+    <InterestCard page={page} perPage={perPage} data={products.data ?? []} />
+  );
 };
 
 export default InterestPage;
