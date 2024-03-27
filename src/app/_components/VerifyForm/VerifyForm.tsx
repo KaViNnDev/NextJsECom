@@ -9,6 +9,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { OTP_INVALID_TEXT, REQUIRED_TEXT } from "~/app/constants";
 import { FallBackComponent } from "../FallBackComponent";
 import { api } from "~/trpc/react";
+import { makeUserLoggedIn } from "./../../session";
 
 export const VerifyForm = () => {
   const [otp, setOtp] = useState<string[]>(Array(8).fill(""));
@@ -19,6 +20,7 @@ export const VerifyForm = () => {
   const verificationMutation = api.user.verifyOtp.useMutation({
     onSuccess: () => {
       setVerificationError("");
+      makeUserLoggedIn();
       router.push("/interests");
     },
     onError: (error) => {

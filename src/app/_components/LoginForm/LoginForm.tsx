@@ -15,6 +15,7 @@ import { Suspense, useState } from "react";
 import { FallBackComponent } from "../FallBackComponent";
 import { api } from "~/trpc/react";
 import { useRouter } from "next/navigation";
+import { makeUserLoggedIn } from "../../session";
 
 export const LoginForm = () => {
   const [loginError, setLoginError] = useState<string>("");
@@ -22,7 +23,8 @@ export const LoginForm = () => {
   const userLoginMutation = api.user.login.useMutation({
     onSuccess: (_success) => {
       setLoginError("");
-      router.push("/verify");
+      makeUserLoggedIn();
+      router.push("/interests");
     },
     onError: (error) => {
       setLoginError(error.message);
